@@ -1,0 +1,1 @@
+fetch ("/players").then (rest => rest.json () ) .then (data => console.log (data))

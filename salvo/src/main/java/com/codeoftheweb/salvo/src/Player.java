@@ -1,0 +1,91 @@
+package com.codeoftheweb.salvo.src;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import java.util.*;
+import java.util.stream.Collectors;
+
+@Entity
+public class Player {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO )
+    private long id;
+    private String userName;
+    private String password;
+
+    @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
+    private Set<GamePlayer>  gamePlayers = new HashSet<>();
+
+    @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
+    private Set<Score>  scores = new HashSet<>();
+
+    public Player(){}
+
+    public Player(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
+
+    public String getUserName(){return this.userName;}
+
+    public void addGamePlayer(GamePlayer gamePlayer){this.gamePlayers.add(gamePlayer);}
+
+    public String getPassword() {return this.password;}
+
+    public void setPassword(String password) {this.password = password;}
+
+
+    public List<Game> getGames(){
+        return this.gamePlayers.stream().map(GamePlayer::getGame).collect(Collectors.toList());
+    }
+
+    @Override
+    public String toString() {
+        return  "username: " + this.userName;
+    }
+
+    public Map<String, Object> getPlayerDTO() {
+        Map<String,Object>  playerDTO = new LinkedHashMap<>();
+        playerDTO.put("id", this.id);
+        playerDTO.put("name", this.userName);
+        return playerDTO;
+    }
+
+    public Map<String, Object> getPlayerWithMailDTO() {
+        Map<String,Object>  playerDTO = new LinkedHashMap<>();
+        playerDTO.put("id", this.id);
+        playerDTO.put("email", this.userName);
+        return playerDTO;
+    }
+
+    public Object getScoreHistoryDTO() {
+        Map<String,Object> scoreHistoryDTO = new LinkedHashMap<>();
+        scoreHistoryDTO.put("name", this.userName);
+        scoreHistoryDTO.put("score", this.getScoreResumeDTO());
+        return scoreHistoryDTO;
+    }
+
+    private Object getScoreResumeDTO() {
+        Map<String,Object> scoreResume = new LinkedHashMap<>();
+        long acumWon = this.getWonGames();
+        double acumTie = this.getTiedGames();
+        double acumLost = this.getLostGames();
+        double acumScore = scores.stream().filter(score -> score.getScore() != -1).mapToDouble(Score::getScore).sum();
+
+        scoreResume.put("total", acumScore);
+        scoreResume.put("won", acumWon);
+        scoreResume.put("lost", acumLost);
+        scoreResume.put("tied", acumTie);
+        return scoreResume;
+    }
+
+    private long getWonGames() {return scores.stream().filter(score -> score.getScore() == 1).count();}
+
+    private long getTiedGames() {return scores.stream().filter(score -> score.getScore() == 0.5).count();}
+
+    private double getLostGames() {return scores.stream().filter(score -> score.getScore() == 0).count();}
+
+    public long getId() {return this.id;}
+}

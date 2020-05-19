@@ -1,0 +1,99 @@
+table td, table th {
+    height: 25px;
+    width: 40px;
+    border-width: 0.1px;
+}
+
+#playerInfo {
+    color: white;
+}
+
+#game-list {
+   margin-top: 70px;
+   opacity: 0.7;
+}
+
+.playerName {
+color: red;
+opacity: 0.9;
+}
+
+
+.game2Body {
+  background-image: url(../images/batalla.jpg);
+  background-repeat: no-repeat;
+
+}
+
+
+.gameBoardTable {
+    width: 400px;
+    height: 275px;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    opacity: 0.9;
+    color: white;
+    text-align: center;
+
+}
+
+.tablaJugadores {
+
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    margin-top: 70px;
+}
+
+
+.salvoBoardTable {
+    background-image: url(../images/sonar.jpg);
+    width: 400px;
+    height: 275px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    opacity: 0.9;
+    color: white;
+    text-align: center;
+
+}
+
+
+
+.ship-piece{
+
+     background-size: 100%;
+     background-repeat: no-repeat;
+     opacity: 0.6;
+}
+
+.ship-pieceV{
+
+    background-size: 100%;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+}
+
+.ship-piece-hited{
+    background-image: url(../images/explosion.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: MediumTurquoise;
+    font-size: 20px;
+    font-weight: 800;
+    opacity: 0.8;
+}
+
+.salvo{
+    background-image: url(../images/agua.jpg);
+    background-size: 120%;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: red;
+    font-size: 20px;
+    font-weight: 800;
+    opacity: 0.8;
+}
