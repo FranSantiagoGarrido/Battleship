@@ -1,11 +1,11 @@
 package com.codeoftheweb.salvo.src;
 
 public enum ShipType {
-    Carrier(5),
-    Battleship(4),
-    Submarine(3),
-    Destroyer(3),
-    Patrolboat(2);
+    CARRIER(5),
+    BATTLESHIP(4),
+    SUBMARINE(3),
+    DESTROYER(3),
+    PATROLBOAT(2);
 
     private final int lenght;
 

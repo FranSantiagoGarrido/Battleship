@@ -33,9 +33,7 @@ public class Game {
 
     public Set<Score> getScores() {return this.scores;}
 
-    public void addGamePlayer(GamePlayer gamePlayer){
-        this.gamePlayers.add(gamePlayer);
-    }
+    public void addGamePlayer(GamePlayer gamePlayer){this.gamePlayers.add(gamePlayer);}
 
 
     public Map<String,Object> getGameDTO() {
@@ -52,12 +50,10 @@ public class Game {
                 gp.getSalvoes().stream().map(Salvo::getSalvoDTO)).collect(Collectors.toList());
     }
 
-    public long getId() {return this.id;
-    }
+    public long getId() {return this.id;}
 
     @JsonIgnore
-    public Object getGamePlayersDTO() {
-        return this.gamePlayers.stream().map(GamePlayer::getGamePlayerDTO).collect(Collectors.toList());
+    public Object getGamePlayersDTO() {return this.gamePlayers.stream().map(GamePlayer::getGamePlayerDTO).collect(Collectors.toList());
     }
 
     public long countGamePlayers() {return this.gamePlayers.size();}
@@ -128,6 +124,8 @@ public class Game {
         GamePlayer gp2 = gpIt.next();
         return gp1.getSalvoes().size() == gp2.getSalvoes().size();
     }
+
+
 
     public void updateHitsTakenForSalvo(Long idOfAttacker, Salvo newSalvo) {
         GamePlayer receiver = this.getOpponent(idOfAttacker);

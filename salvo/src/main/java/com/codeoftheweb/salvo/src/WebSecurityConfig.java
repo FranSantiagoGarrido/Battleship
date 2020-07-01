@@ -21,11 +21,13 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         //REQUESTS
         http.authorizeRequests().
-                antMatchers("/web/games.html" , "/web/js/games.js", "/api/games", "/api/leaderBoard").permitAll().
-                antMatchers( "/web/game.html", "/web/css/style.css" , "/web/game_2.html" , "/web/js/game_2.js" , "/web/css/game.css").permitAll().
+                antMatchers("/web/game.html" , "/web/game_2.html" , "/web/games.html","/web/games_2.html" ,"/web/games_3.html", "/api/games", "/api/leaderBoard").permitAll().
+                antMatchers(  "/web/js/**").permitAll().
                // antMatchers("/web/game.html").hasAuthority("USER").
-                antMatchers("/web/img/**").permitAll().
-                antMatchers("/api/**").hasAuthority("USER").
+                antMatchers( "/web/css/**").permitAll().
+
+                antMatchers("/web/img/**", "/web/images/**").permitAll().
+               // antMatchers("/api/**").hasAuthority("USER").
 
 
 

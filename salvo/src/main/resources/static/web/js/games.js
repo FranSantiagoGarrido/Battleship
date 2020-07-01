@@ -15,6 +15,9 @@ $(function() {
 $('#login-form').on('submit', function (event) {
     event.preventDefault();
 
+console.log ($("#username").val())
+console.log ($("#password").val())
+
     if (submitButton == "login") {
         $.post("/api/login",
             { name: $("#username").val(),
@@ -22,7 +25,6 @@ $('#login-form').on('submit', function (event) {
             .done(function() {
                 console.log("login ok");
                 $('#loginSuccess').show( "slow" ).delay(2000).hide( "slow" );
-                // $("#username").val("");
                 $("#password").val("");
                 updateJson();
 
@@ -328,6 +330,9 @@ function showScoreBoard(playersArray) {
             }
         }
     }
+
+
+
 
 
 

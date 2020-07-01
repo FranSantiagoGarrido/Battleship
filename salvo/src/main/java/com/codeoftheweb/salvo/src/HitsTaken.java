@@ -38,15 +38,21 @@ public class HitsTaken {
         this.hitsOnMyFleet = new LinkedHashMap<>(previousHitsTaken.hitsOnMyFleet);
     }
 
-    public Map<String,Integer> getHitsOnMyFleet() {return this.hitsOnMyFleet;}
+    public Map<String,Integer> getHitsOnMyFleet() {
+        return this.hitsOnMyFleet;
+    }
 
     public void updateHitsOnMyFleet(String shipType) {
         this.hitsOnMyFleet.merge(shipType, 1, Integer::sum);
     }
 
-    public int getTurn() {return this.turn;}
+    public int getTurn() {
+        return this.turn;
+    }
 
-    public int getHitsTaken(String shipType) {return this.hitsOnMyFleet.get(shipType);}
+    public int getHitsTaken(String shipType) {
+        return this.hitsOnMyFleet.get(shipType);
+    }
 
     public int numberOfSunkShips() {
         int acum = 0;

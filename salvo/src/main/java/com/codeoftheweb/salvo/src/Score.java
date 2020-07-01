@@ -36,15 +36,25 @@ public class Score {
         this.player = player;
     }
 
-    public void setScore(double score) {this.scoreValue = score;}
+    public void setScore(double score) {
+        this.scoreValue = score;
+    }
 
-    public boolean finishedGame() {return this.finishDate != null;}
+    public boolean finishedGame() {
+        return this.finishDate != null;
+    }
 
-    public void setGame(Game game) {this.game = game;}
+    public void setGame(Game game) {
+        this.game = game;
+    }
 
-    public void setFinishDate(Date date) {this.finishDate = date;}
+    public void setFinishDate(Date date) {
+        this.finishDate = date;
+    }
 
-    public void setPlayer(Player player) {this.player = player;}
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
     public double getScore() {
         if (scoreValue == null) {
@@ -53,11 +63,17 @@ public class Score {
         return this.scoreValue;
     }
 
-    public Game getGame() {return this.game;}
+    public Game getGame() {
+        return this.game;
+    }
 
-    public Player getPlayer() {return this.player;}
+    public Player getPlayer() {
+        return this.player;
+    }
 
-    public Date getFinishDate() {return this.finishDate;}
+    public Date getFinishDate() {
+        return this.finishDate;
+    }
 
     public Object getScoreDTO() {
         Map<String,Object> scoreDTO = new LinkedHashMap<>();

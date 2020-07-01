@@ -41,23 +41,41 @@ public class GamePlayer {
         this.joinDate = new Date();
     }
 
-    public void setGame(Game game) {this.game = game;}
+    public void setGame(Game game) {
+        this.game = game;
+    }
 
-    public Player getPlayer(){return this.player;}
+    public Player getPlayer(){
+        return this.player;
+    }
 
-    public Game getGame(){return this.game;}
+    public Game getGame(){
+        return this.game;
+    }
 
-    public Long getId() {return this.id;}
+    public Long getId() {
+        return this.id;
+    }
 
-    public Date getJoinDate(){return this.joinDate;}
+    public Date getJoinDate(){
+        return this.joinDate;
+    }
 
-    public Set<Ship> getShips() {return this.ships;}
+    public Set<Ship> getShips() {
+        return this.ships;
+    }
 
-    public void addShip(Ship ship) {this.ships.add(ship);}
+    public void addShip(Ship ship) {
+        this.ships.add(ship);
+    }
 
-    public Set<Salvo> getSalvoes() {return this.salvoes;}
+    public Set<Salvo> getSalvoes() {
+        return this.salvoes;
+    }
 
-    public boolean hasNoShips() {return this.ships.isEmpty();}
+    public boolean hasNoShips() {
+        return this.ships.isEmpty();
+    }
 
     public HitsTaken getHitsTakenForTurn(int turn) {
         if (this.hitsTaken == null) {
@@ -123,7 +141,9 @@ public class GamePlayer {
         this.getGame().updateHitsTakenForSalvo(this.id,salvo);
     }
 
-    public GameState getGameState() {return this.gameState;}
+    public GameState getGameState() {
+        return this.gameState;
+    }
 
     public void updateGameState() {
 
@@ -133,22 +153,25 @@ public class GamePlayer {
 
         if ((this.gameState == GameState.WAIT) && (this.game.bothPlayersHaveShips())
                 && (this.game.salvosTurnMatch())) {
-            //verifica si gano/perdio/empato
+            //los dos jugadores tiraron salvos y estan esperando el resultado
+            //verifico si el jugador gano/perdio/empato
             GameResult gameResult = this.game.getResult(this.id);
             if (gameResult != GameResult.TBD) {
-                //partida terminada
+                //termino la partida
                 this.gameState = GameState.valueOf(gameResult.toString());
                 return;
             }
 
-            //partida no terminada, ambos dispararon y colocaron sus barcos
+            //la partida no termino, ambos dispararon para el turno correspondiente y colocaron sus barcos
             if (this.gameState != GameState.PLACESHIPS) {
                 this.gameState = GameState.PLAY;
             }
         }
     }
 
-    public void setGameState(GameState gameState) {this.gameState = gameState;}
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
 
     public boolean gameFinished() {
         switch (gameState) {
@@ -163,9 +186,13 @@ public class GamePlayer {
         }
     }
 
-    public Player getOpponent() {return this.game.getOpponent(this.id).getPlayer();}
+    public Player getOpponent() {
+        return this.game.getOpponent(this.id).getPlayer();
+    }
 
-    public GamePlayer getGpOpponent() {return this.game.getOpponent(this.id);}
+    public GamePlayer getGpOpponent() {
+        return this.game.getOpponent(this.id);
+    }
 
     public void updateHitsTakenIfNeeded() {
 
